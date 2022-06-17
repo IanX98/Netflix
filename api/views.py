@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import MovieSerializer
+from movie import models
 # Create your views here.
 
 @api_view(['GET'])
@@ -17,6 +18,6 @@ def apiOverview(request):
 
 @api_view(['GET'])
 def movieList(request):
-    movies = Movie.objects.all()
+    movies = models.Movie.objects.all()
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
