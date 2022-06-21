@@ -9,9 +9,6 @@ def apiOverview(request):
     api_urls = {
         'List':'/movie-list/',
         'Detail View':'/movie-detail/<str:pk>/',
-        'Create':'/movie-create/',
-        'Update':'/movie-update/<str:pk>/',
-        'Delete':'/movie-delete/<str:pk>/',
     }
     return Response(api_urls)
 
@@ -20,4 +17,10 @@ def apiOverview(request):
 def movieList(request):
     movies = models.Movie.objects.all()
     serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def movieDetail(request, pk):
+    movies = models.Movie.objects.get(id=pk)
+    serializer = MovieSerializer(movies, many=False)
     return Response(serializer.data)
