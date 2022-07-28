@@ -21,6 +21,7 @@ export default class DetailsMovie extends Component {
 
   fetchMovie(){
     console.log('Fetching...')
+    return
 
     fetch('http://127.0.0.1:8000/api/movie-list/int:pk/')
     .then(response => response.json())
@@ -32,6 +33,7 @@ export default class DetailsMovie extends Component {
   }
 
   render() {
+    console.log(this.props.match.params)
     var movie = this.state.movieDetail
     return (
       <div class="py-10">

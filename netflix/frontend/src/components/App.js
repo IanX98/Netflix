@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { render } from "react-dom";
 import NavBar from "./NavBar";
@@ -6,12 +6,8 @@ import HomePage from "./HomePage";
 import HomeMovies from "./HomeMovies";
 import DetailsMovie from "./DetailsMovie";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+const App = () => {
 
-  render() {
     return (
       <div>
         <NavBar />
@@ -24,8 +20,9 @@ export default class App extends Component {
         </Router>
       </div>
     );
-  }
 }
 
 const rootDiv = document.getElementById("root");
 render(<App />, rootDiv);
+
+export default App;
