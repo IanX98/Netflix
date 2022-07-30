@@ -19,3 +19,12 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+class Episode(models.Model):
+    movie = models.ForeignKey("Movie", related_name="episodes", on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    video = models.URLField()
+     
+    def __str__(self):
+        return self.title
+        
